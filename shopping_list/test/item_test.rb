@@ -10,18 +10,17 @@ class ItemTest < Minitest::Test
   end
 
   def test_quantity
-    skip
     item = Item.new(quantity: "1 bottle")
     assert_equal "1 bottle", item.quantity
   end
 
   def test_all_the_things
-    skip
     data = {name: "guacamole", quantity: "enough"}
     item = Item.new(data)
     assert_equal "guacamole", item.name
     assert_equal "enough", item.quantity
   end
+
 end
 
 

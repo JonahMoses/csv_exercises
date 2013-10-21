@@ -1,24 +1,22 @@
 require 'csv'
-require_relative 'item'
+require './lib/grade'
 
-class ShoppingList
+class ReportCard
+  attr_reader :filename
+
   def initialize(filename)
     @filename = filename
   end
 
-  def filename
-    @filename
+  def grades
+    @grades ||= build_grades
   end
 
-  def items
-    @items ||= build_items
-  end
+private
 
-  private
-
-  def build_items
+  def build_grades
     data.collect do |row|
-      Item.new(row)
+      Grade.new(row)
     end
   end
 
@@ -27,4 +25,3 @@ class ShoppingList
   end
 
 end
-

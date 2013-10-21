@@ -1,24 +1,22 @@
 require 'csv'
-require_relative 'item'
+require './lib/appointment'
 
-class ShoppingList
+class DoctorsOffice
+  attr_reader :filename
+
   def initialize(filename)
     @filename = filename
   end
 
-  def filename
-    @filename
-  end
+ def appointments
+    @appointments ||= build_appointments
+end
 
-  def items
-    @items ||= build_items
-  end
+private
 
-  private
-
-  def build_items
+  def build_appointments
     data.collect do |row|
-      Item.new(row)
+      Appointment.new(row)
     end
   end
 
@@ -27,4 +25,3 @@ class ShoppingList
   end
 
 end
-

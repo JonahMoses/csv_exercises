@@ -1,24 +1,23 @@
 require 'csv'
-require_relative 'item'
+require './lib/birthday'
 
-class ShoppingList
+class Calendar
+
+attr_reader :filename
+
   def initialize(filename)
     @filename = filename
   end
 
-  def filename
-    @filename
-  end
+ def birthday
+    @birthday ||= build_birthdays
+end
 
-  def items
-    @items ||= build_items
-  end
+private
 
-  private
-
-  def build_items
+  def build_birthdays
     data.collect do |row|
-      Item.new(row)
+      Birthday.new(row)
     end
   end
 
@@ -27,4 +26,3 @@ class ShoppingList
   end
 
 end
-

@@ -10,7 +10,6 @@ class ReportCardTest < Minitest::Test
   end
 
   def test_load_data
-    skip
     report_card = ReportCard.new("./test/fixtures/grades.csv")
 
     grade = report_card.grades[1]
